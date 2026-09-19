@@ -1,0 +1,11 @@
+{
+  "defaults": { "on_violation": "fail", "evaluation": "pre_execution" },
+  "policies": [
+    {
+      "id": "email-agent-no-send",
+      "target": ["resend.email.create"],
+      "when": { "field": "tool", "operator": "==", "value": "resend.email.create" },
+      "action": { "type": "POLICY_BLOCKED", "message": "email agent is read-only: sending is out of scope" }
+    }
+  ]
+}

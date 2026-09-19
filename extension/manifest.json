@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Rackey — Executive Assistant",
+  "version": "0.1.0",
+  "description": "Governed inbox triage, broken-promise detection, and daily briefings on Swytchcode.",
+  "permissions": ["sidePanel", "storage"],
+  "host_permissions": ["http://localhost:8787/*"],
+  "background": { "service_worker": "background.js" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "action": { "default_title": "Open Rackey" },
+  "icons": {}
+}

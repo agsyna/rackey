@@ -1,0 +1,261 @@
+{
+  "editor": "none",
+  "integrations": {
+    "Notion.notion": {
+      "version": "2.0.0"
+    }
+  },
+  "mode": "production",
+  "tools": {
+    "notion.page.create": {
+      "desc": "",
+      "inputs": [
+        {
+          "Notion-Version": {
+            "DEFAULT": "2025-09-03",
+            "LOCATION": "header",
+            "REQUIRED": false,
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "body": {
+            "LOCATION": "body",
+            "REQUIRED": false,
+            "TYPE": "OBJECT",
+            "schema": {
+              "properties": {
+                "children": {
+                  "required": false,
+                  "type": "[]STRING"
+                },
+                "cover": {
+                  "required": false,
+                  "type": "string"
+                },
+                "icon": {
+                  "required": false,
+                  "type": "string"
+                },
+                "parent": {
+                  "properties": {
+                    "variant_2": {
+                      "required": false,
+                      "type": "any"
+                    },
+                    "variant_dataSourceIdParentRequest": {
+                      "properties": {
+                        "database_id": {
+                          "required": true,
+                          "type": "string"
+                        },
+                        "type": {
+                          "required": false,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "database_id"
+                      ],
+                      "type": "object"
+                    },
+                    "variant_pageIdParentRequest": {
+                      "properties": {
+                        "page_id": {
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "page_id"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "properties": {
+                  "required": true,
+                  "type": "map[STRING]ANY"
+                }
+              },
+              "required": [
+                "parent",
+                "properties"
+              ]
+            }
+          }
+        }
+      ],
+      "integration": "Notion.notion@2.0.0",
+      "method_hash": "ef50ebb34f166b81d5731347d4ff503f0bc9af19f3caac5ec78510d06c6094db",
+      "output": {
+        "schema": {
+          "properties": {
+            "archived": {
+              "required": false,
+              "type": "boolean"
+            },
+            "cover": {
+              "required": false,
+              "type": "any"
+            },
+            "created_time": {
+              "required": false,
+              "type": "string"
+            },
+            "icon": {
+              "required": false,
+              "type": "any"
+            },
+            "id": {
+              "required": false,
+              "type": "string"
+            },
+            "in_trash": {
+              "required": false,
+              "type": "boolean"
+            },
+            "last_edited_time": {
+              "required": false,
+              "type": "string"
+            },
+            "object": {
+              "required": false,
+              "type": "string"
+            },
+            "parent": {
+              "required": false,
+              "type": "object"
+            },
+            "properties": {
+              "required": false,
+              "type": "object"
+            },
+            "public_url": {
+              "required": false,
+              "type": "any"
+            },
+            "url": {
+              "required": false,
+              "type": "string"
+            }
+          }
+        },
+        "status": 200
+      },
+      "summary": "Create a page",
+      "type": "method"
+    },
+    "notion.page.update": {
+      "desc": "",
+      "inputs": [
+        {
+          "page_id": {
+            "LOCATION": "path",
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "Notion-Version": {
+            "DEFAULT": "2025-09-03",
+            "LOCATION": "header",
+            "REQUIRED": false,
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "body": {
+            "LOCATION": "body",
+            "REQUIRED": false,
+            "TYPE": "OBJECT",
+            "schema": {
+              "properties": {
+                "archived": {
+                  "required": false,
+                  "type": "boolean"
+                },
+                "cover": {
+                  "required": false,
+                  "type": "object"
+                },
+                "icon": {
+                  "required": false,
+                  "type": "object"
+                },
+                "in_trash": {
+                  "required": false,
+                  "type": "boolean"
+                },
+                "properties": {
+                  "required": false,
+                  "type": "map[STRING]ANY"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "integration": "Notion.notion@2.0.0",
+      "method_hash": "ae3e4573e963e2b47f9b97373bf0322f8698045f74f94ca4a1c05b2a249d6407",
+      "output": {
+        "schema": {
+          "properties": {
+            "archived": {
+              "required": false,
+              "type": "boolean"
+            },
+            "cover": {
+              "required": false,
+              "type": "any"
+            },
+            "created_time": {
+              "required": false,
+              "type": "string"
+            },
+            "icon": {
+              "required": false,
+              "type": "any"
+            },
+            "id": {
+              "required": false,
+              "type": "string"
+            },
+            "in_trash": {
+              "required": false,
+              "type": "boolean"
+            },
+            "last_edited_time": {
+              "required": false,
+              "type": "string"
+            },
+            "object": {
+              "required": false,
+              "type": "string"
+            },
+            "parent": {
+              "required": false,
+              "type": "object"
+            },
+            "properties": {
+              "required": false,
+              "type": "object"
+            },
+            "public_url": {
+              "required": false,
+              "type": "any"
+            },
+            "url": {
+              "required": false,
+              "type": "string"
+            }
+          }
+        },
+        "status": 200
+      },
+      "summary": "Update page properties",
+      "type": "method"
+    }
+  },
+  "version": "2.20.4"
+}

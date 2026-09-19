@@ -1,0 +1,28 @@
+{
+  "name": "rackey",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AI executive productivity assistant with governed, scope-separated agents on Swytchcode",
+  "scripts": {
+    "server": "tsx src/server.ts",
+    "triage": "tsx src/cli.ts triage",
+    "conflicts": "tsx src/cli.ts conflicts",
+    "promises": "tsx src/cli.ts promises",
+    "briefing": "tsx src/cli.ts briefing",
+    "test": "tsx --test src/**/*.test.ts",
+    "boundary": "tsx src/boundary-demo.ts",
+    "scopes": "./scripts/policy-boundary-test.sh --scope-only"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.4",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

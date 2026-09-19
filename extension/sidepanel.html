@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rackey</title>
+<style>
+
+  :root {
+    --bg: #ffffff;
+    --fg: #37352f;
+    --fg-strong: #1a1a19;
+    --muted: #9b9a97;
+    --muted-2: #787774;
+    --line: #ebebea;
+    --line-2: #e0e0de;
+    --card: #fbfbfa;
+    --hover: #f1f1ef;
+    --btn: #37352f;
+    --btn-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #191919;
+      --fg: #d4d4d2;
+      --fg-strong: #ffffff;
+      --muted: #6f6f6c;
+      --muted-2: #979794;
+      --line: #2a2a29;
+      --line-2: #343432;
+      --card: #202020;
+      --hover: #2a2a29;
+      --btn: #ffffff;
+      --btn-fg: #191919;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 16px 14px 32px;
+    background: var(--bg);
+    color: var(--fg);
+    font: 14px/1.55 ui-sans-serif, -apple-system, "Segoe UI", Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1 {
+    font-size: 20px; font-weight: 700; letter-spacing: -0.01em;
+    color: var(--fg-strong); margin: 0 0 3px;
+  }
+  .sub { color: var(--muted); font-size: 12px; margin-bottom: 18px; }
+
+  h2 {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted);
+    margin: 22px 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line);
+  }
+
+  .actions { display: grid; gap: 4px; margin-bottom: 16px; }
+  button {
+    font: inherit; font-size: 13px;
+    padding: 7px 10px;
+    border: 1px solid var(--line-2);
+    background: transparent; color: var(--fg);
+    border-radius: 4px; cursor: pointer; text-align: left;
+    transition: background .12s ease;
+  }
+  button:hover:not(:disabled) { background: var(--hover); }
+  button:disabled { opacity: .4; cursor: default; }
+  button.primary {
+    background: var(--btn); color: var(--btn-fg); border-color: var(--btn); font-weight: 500;
+  }
+  button.primary:hover:not(:disabled) { opacity: .85; background: var(--btn); }
+  button.tiny {
+    padding: 3px 9px; font-size: 12px; width: auto; display: inline-block;
+    color: var(--muted-2); border-radius: 3px;
+  }
+  button.tiny:hover:not(:disabled) { color: var(--fg); }
+
+  .card {
+    border-bottom: 1px solid var(--line);
+    padding: 11px 2px 12px;
+  }
+  .card:last-of-type { border-bottom: none; }
+  .note {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 4px; padding: 10px 12px; margin: 8px 0;
+    font-size: 12px; color: var(--muted-2);
+  }
+
+  .row { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+  .subject { font-weight: 600; color: var(--fg-strong); }
+  .meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .reason { margin: 7px 0 0; font-size: 13px; }
+
+  .tag {
+    flex: none; font-size: 10px; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--muted); white-space: nowrap;
+  }
+  .tag::before {
+    content: "■"; margin-right: 5px; font-size: 9px; vertical-align: 1px;
+  }
+  .tag.high { color: var(--fg-strong); }
+  .tag.medium { color: var(--muted-2); }
+  .tag.low::before { content: "□"; }
+
+  blockquote {
+    margin: 8px 0 0; padding: 0 0 0 11px;
+    border-left: 2px solid var(--line-2);
+    color: var(--muted-2); font-size: 12px;
+  }
+
+  .status {
+    font-size: 12px; color: var(--muted); min-height: 17px; margin-bottom: 10px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--line);
+  }
+  .status.err { color: var(--fg-strong); font-weight: 500; }
+  .status.err::before { content: "! "; }
+  .status.ok::before { content: "✓ "; }
+
+  .empty { color: var(--muted); font-size: 13px; padding: 10px 0; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  td, th { text-align: left; padding: 5px 6px 5px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 3px; padding: 1px 4px;
+  }
+  .scroll { overflow-x: auto; }
+  .btnrow { margin-top: 9px; display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .verdict { font-weight: 600; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+  .verdict.pass { color: var(--muted-2); }
+  .verdict.pass::before { content: "✓ "; }
+  .verdict.fail { color: #b42318; }
+  .verdict.fail::before { content: "✕ "; }
+  @media (prefers-color-scheme: dark) { .verdict.fail { color: #f97066; } }
+</style>
+</head>
+<body>
+  <h1>Rackey</h1>
+  <div class="sub">Prioritise mail, resolve schedule clashes, keep notes, brief and remind.<br>Nothing is written or sent without your confirmation.</div>
+
+  <div class="actions">
+    <button id="btn-triage">1 &nbsp;Prioritise my inbox</button>
+    <button id="btn-conflicts">2 &nbsp;Find calendar conflicts</button>
+    <button id="btn-promises">3 &nbsp;Follow-ups I owe people</button>
+    <button id="btn-briefing" class="primary">4 &nbsp;Send me today's briefing</button>
+    <button id="btn-boundary">Permission check</button>
+  </div>
+
+  <div id="status" class="status"></div>
+  <div id="out"></div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

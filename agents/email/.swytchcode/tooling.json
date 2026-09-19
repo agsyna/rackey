@@ -1,0 +1,370 @@
+{
+  "editor": "claude",
+  "integrations": {
+    "Gmail.gmail": {
+      "version": "v1"
+    }
+  },
+  "mode": "production",
+  "tools": {
+    "gmail.user.messages.get": {
+      "desc": "Lists the messages in the user's mailbox. For more information, see [List Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).",
+      "inputs": [
+        {
+          "userId": {
+            "LOCATION": "path",
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "includeSpamTrash": {
+            "LOCATION": "query",
+            "REQUIRED": false,
+            "TYPE": "BOOL"
+          }
+        },
+        {
+          "labelIds": {
+            "LOCATION": "query",
+            "REQUIRED": false,
+            "TYPE": "[]ANY"
+          }
+        },
+        {
+          "maxResults": {
+            "LOCATION": "query",
+            "REQUIRED": false,
+            "TYPE": "INT"
+          }
+        },
+        {
+          "pageToken": {
+            "LOCATION": "query",
+            "REQUIRED": false,
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "q": {
+            "LOCATION": "query",
+            "REQUIRED": false,
+            "TYPE": "STRING"
+          }
+        }
+      ],
+      "integration": "Gmail.gmail@v1",
+      "method_hash": "79eb34c1a163c710e360e0175732f42a97d25ae1f510b87f7f0f818209f28569",
+      "output": {
+        "schema": {
+          "properties": {
+            "messages": {
+              "items": {
+                "properties": {
+                  "classificationLabelValues": {
+                    "items": {
+                      "properties": {
+                        "fields": {
+                          "items": {
+                            "properties": {
+                              "fieldId": {
+                                "required": false,
+                                "type": "string"
+                              },
+                              "selection": {
+                                "required": false,
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "required": false,
+                          "type": "array"
+                        },
+                        "labelId": {
+                          "required": false,
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "required": false,
+                    "type": "array"
+                  },
+                  "historyId": {
+                    "required": false,
+                    "type": "string"
+                  },
+                  "id": {
+                    "required": false,
+                    "type": "string"
+                  },
+                  "internalDate": {
+                    "required": false,
+                    "type": "string"
+                  },
+                  "labelIds": {
+                    "required": false,
+                    "type": "[]STRING"
+                  },
+                  "payload": {
+                    "properties": {
+                      "body": {
+                        "properties": {
+                          "attachmentId": {
+                            "required": false,
+                            "type": "string"
+                          },
+                          "data": {
+                            "required": false,
+                            "type": "string"
+                          },
+                          "size": {
+                            "required": false,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "filename": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "headers": {
+                        "items": {
+                          "properties": {
+                            "name": {
+                              "required": false,
+                              "type": "string"
+                            },
+                            "value": {
+                              "required": false,
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "required": false,
+                        "type": "array"
+                      },
+                      "mimeType": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "partId": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "parts": {
+                        "items": {
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "required": false,
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "raw": {
+                    "required": false,
+                    "type": "string"
+                  },
+                  "sizeEstimate": {
+                    "required": false,
+                    "type": "integer"
+                  },
+                  "snippet": {
+                    "required": false,
+                    "type": "string"
+                  },
+                  "threadId": {
+                    "required": false,
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "required": false,
+              "type": "array"
+            },
+            "nextPageToken": {
+              "required": false,
+              "type": "string"
+            },
+            "resultSizeEstimate": {
+              "required": false,
+              "type": "integer"
+            }
+          }
+        },
+        "status": 200
+      },
+      "summary": "Lists the messages in the user's mailbox",
+      "type": "method"
+    },
+    "gmail.user.messages.get1": {
+      "desc": "Gets the specified message.",
+      "inputs": [
+        {
+          "userId": {
+            "LOCATION": "path",
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "id": {
+            "LOCATION": "path",
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "format": {
+            "LOCATION": "query",
+            "REQUIRED": false,
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "metadataHeaders": {
+            "LOCATION": "query",
+            "REQUIRED": false,
+            "TYPE": "[]ANY"
+          }
+        }
+      ],
+      "integration": "Gmail.gmail@v1",
+      "method_hash": "1e665edf485741a7ffaf3c058e10c04d3c9815ec11ed2f9a071ebecaeac83291",
+      "output": {
+        "schema": {
+          "properties": {
+            "classificationLabelValues": {
+              "items": {
+                "properties": {
+                  "fields": {
+                    "items": {
+                      "properties": {
+                        "fieldId": {
+                          "required": false,
+                          "type": "string"
+                        },
+                        "selection": {
+                          "required": false,
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "required": false,
+                    "type": "array"
+                  },
+                  "labelId": {
+                    "required": false,
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "required": false,
+              "type": "array"
+            },
+            "historyId": {
+              "required": false,
+              "type": "string"
+            },
+            "id": {
+              "required": false,
+              "type": "string"
+            },
+            "internalDate": {
+              "required": false,
+              "type": "string"
+            },
+            "labelIds": {
+              "required": false,
+              "type": "[]STRING"
+            },
+            "payload": {
+              "properties": {
+                "body": {
+                  "properties": {
+                    "attachmentId": {
+                      "required": false,
+                      "type": "string"
+                    },
+                    "data": {
+                      "required": false,
+                      "type": "string"
+                    },
+                    "size": {
+                      "required": false,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "filename": {
+                  "required": false,
+                  "type": "string"
+                },
+                "headers": {
+                  "items": {
+                    "properties": {
+                      "name": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "value": {
+                        "required": false,
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "required": false,
+                  "type": "array"
+                },
+                "mimeType": {
+                  "required": false,
+                  "type": "string"
+                },
+                "partId": {
+                  "required": false,
+                  "type": "string"
+                },
+                "parts": {
+                  "items": {
+                    "properties": {},
+                    "type": "object"
+                  },
+                  "required": false,
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "raw": {
+              "required": false,
+              "type": "string"
+            },
+            "sizeEstimate": {
+              "required": false,
+              "type": "integer"
+            },
+            "snippet": {
+              "required": false,
+              "type": "string"
+            },
+            "threadId": {
+              "required": false,
+              "type": "string"
+            }
+          }
+        },
+        "status": 200
+      },
+      "summary": "Gets the specified message.",
+      "type": "method"
+    }
+  },
+  "version": "2.20.4"
+}

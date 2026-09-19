@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/synaagrawala/hack/rackey/agents/email && cd /Users/synaagrawala/hack/rackey/agents/email && swytchcode init --non-interactive --editor none --mode production 2>&1 | head -40; echo \"===FILES===\"; find . -type f | head -20)",
+      "Bash(swytchcode list *)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(swytchcode discover *)",
+      "Bash(/Users/synaagrawala/hack/rackey/scripts/swy.sh get *)",
+      "Bash(grep -vE '^\\\\s*$|Fetching')",
+      "Bash(/Users/synaagrawala/hack/rackey/scripts/swy.sh list *)",
+      "Bash(/Users/synaagrawala/hack/rackey/scripts/swy.sh add *)",
+      "Bash(/Users/synaagrawala/hack/rackey/scripts/swy.sh init *)",
+      "Bash(python3 scripts/patch-notion-wrekenfile.py agents/notes)",
+      "Bash(/Users/synaagrawala/hack/rackey/scripts/swy.sh info *)",
+      "Bash(python3 -c \"import json;d=json.load\\(open\\('.swytchcode/tooling.json'\\)\\);print\\('tools:',list\\(d['tools']\\)\\)\")",
+      "Bash(chmod +x scripts/policy-boundary-test.sh)",
+      "Bash(./scripts/policy-boundary-test.sh --scope-only)",
+      "Bash(./scripts/policy-boundary-test.sh --live-only)",
+      "Bash(python3 -c \"import json;d=json.load\\(open\\('.swytchcode/tooling.json'\\)\\);print\\('integrations:',list\\(d['integrations']\\)\\);print\\('tools:',list\\(d['tools']\\)\\)\")",
+      "Bash(echo \"=== global swytchcode dirs ===\"; ls -la ~/.swytchcode 2>/dev/null | head -20; echo; echo \"=== cache locations ===\"; ls -la ~/Library/Caches/swytchcode 2>/dev/null | head; ls -la ~/.cache/swytchcode 2>/dev/null | head; echo; echo \"=== any resend bundle globally ===\"; find ~/.swytchcode ~/Library/Caches/swytchcode -ipath \"*esend*\" 2>/dev/null | head)",
+      "Read(//Users/synaagrawala/.swytchcode/**)",
+      "Read(//Users/synaagrawala/Library/Caches/**)",
+      "Read(//Users/synaagrawala/.cache/**)"
+    ]
+  }
+}
